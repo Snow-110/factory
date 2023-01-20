@@ -15,6 +15,11 @@ protected:
   sf::Sprite sprite;
 
  public:
+  enum class TYPE{
+    BASEBALL,
+    BASKETBALL,
+    TENNISBALL
+  };
   Ball();
   virtual ~Ball();
 

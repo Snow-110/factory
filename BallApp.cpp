@@ -1,9 +1,7 @@
 #include "BallApp.h"
 #include "Rand.h"
 #include "Ball.h"
-#include "BasketBall.h"
-#include "BaseBall.h"
-#include "TennisBall.h"
+#include "BallFactory.h"
 
 BallApp::BallApp()
 {
@@ -22,11 +20,11 @@ void BallApp::init()
   for (auto& b : balls) {
     int r = Rand::range(0, 9); // 0〜9の乱数
     if (r < 1)
-      b = new BasketBall;
+      b = BallFactory::create(Ball::TYPE::BASKETBALL);
     else if (r < 4)
-      b = new BaseBall;
+      b = BallFactory::create(Ball::TYPE::BASEBALL);
     else
-      b = new TennisBall;
+      b = BallFactory::create(Ball::TYPE::TENNISBALL);
 
     b->init();
   }
